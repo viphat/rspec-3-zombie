@@ -1,4 +1,6 @@
 require 'spec_helper'
+require 'rspec/collection_matchers'
+
 require 'zombie'
 require 'tweet'
 
@@ -36,6 +38,7 @@ describe Zombie do
   # expect(actual).to exist        # passes if actual.exist? and/or actual.exists? are truthy
   # expect(actual).to exist(*args) # passes if actual.exist?(*args) and/or actual.exists?(*args) are truthy
   xit 'is hungry' do
+    # pending an example
     zombie = Zombie.new
     expect(zombie.hungry?).to be true
   end
@@ -51,6 +54,11 @@ describe Zombie do
     zombie = Zombie.new(name: 'Ass', tweets: [tweet1, tweet2])
     expect(zombie.tweets).to include(tweet1)
     expect(zombie.tweets).to include(tweet2)
+  end
+
+  it 'starts with two weapons' do
+    zombie = Zombie.new(name: 'Ass')
+    expect(zombie.weapons).to have(2).weapons
   end
 
 end
