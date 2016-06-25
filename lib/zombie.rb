@@ -6,4 +6,8 @@ class Zombie
     @brains = 0
   end
 
+  def hungry?
+    true
+  end
+
 end
