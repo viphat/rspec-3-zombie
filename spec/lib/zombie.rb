@@ -7,7 +7,7 @@ require 'tweet'
 describe Zombie do
   # Your example test go here
   it 'is named Ash' do
-    zombie = Zombie.new
+    zombie = Zombie.new(name: 'Ash')
     expect(zombie.name).to eq('Ash')
   end
 
@@ -26,7 +26,7 @@ describe Zombie do
   # expect(actual).to end_with expected
   it 'has no brains' do
     # pending
-    zombie = Zombie.new
+    zombie = Zombie.new(name: 'Ash')
     expect(zombie.brains).to be <(1)
   end
 
@@ -39,7 +39,7 @@ describe Zombie do
   # expect(actual).to exist(*args) # passes if actual.exist?(*args) and/or actual.exists?(*args) are truthy
   xit 'is hungry' do
     # pending an example
-    zombie = Zombie.new
+    zombie = Zombie.new(name: 'Ash')
     expect(zombie.hungry?).to be true
   end
 
@@ -66,6 +66,11 @@ describe Zombie do
     tweet2 = Tweet.new(status: 'Arrrgggghhhh')
     zombie = Zombie.new(name: 'Ass', tweets: [tweet1])
     expect {zombie.tweet!(tweet2)}.to change {zombie.tweets.count}.by(1)
+  end
+
+  it 'must raise an error' do
+    zombie = Zombie.new({})
+    expect{zombie.validate!}.to raise_error("Zombie must have a name")
   end
 
 end
