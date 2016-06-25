@@ -5,13 +5,13 @@ require 'zombie'
 require 'tweet'
 
 describe Zombie do
-
   let(:tweet1) { Tweet.new(status: 'Uuuuuuhhhhh') }
   let(:tweet2) { Tweet.new(status: 'Arrrgggghhhh') }
+  subject { Zombie.new(name: 'Ash') }
   # Your example test go here
   it 'is named Ash' do
-    zombie = Zombie.new(name: 'Ash')
-    expect(zombie.name).to eq('Ash')
+    # zombie = Zombie.new(name: 'Ash')
+    expect(subject.name).to eq('Ash')
   end
 
   # Comparisons
@@ -29,7 +29,7 @@ describe Zombie do
   # expect(actual).to end_with expected
   it 'has no brains' do
     # pending an example
-    pending
+    # pending
     # In RSpec 3, Pending will make an example failed
     expect(subject.brains).to be <(1)
   end
@@ -69,6 +69,7 @@ describe Zombie do
   end
 
   it 'must raise an error' do
+    subject.name = nil
     expect{subject.validate!}.to raise_error("Zombie must have a name")
   end
 
