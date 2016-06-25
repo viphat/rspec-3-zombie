@@ -16,4 +16,8 @@ class Zombie
     true
   end
 
+  def tweet!(tweet)
+    @tweets.push(tweet)
+  end
+
 end

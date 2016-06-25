@@ -61,4 +61,11 @@ describe Zombie do
     expect(zombie.weapons).to have(2).weapons
   end
 
+  it 'changes number of tweets' do
+    tweet1 = Tweet.new(status: 'Uuuuuuhhhhh')
+    tweet2 = Tweet.new(status: 'Arrrgggghhhh')
+    zombie = Zombie.new(name: 'Ass', tweets: [tweet1])
+    expect {zombie.tweet!(tweet2)}.to change {zombie.tweets.count}.by(1)
+  end
+
 end
