@@ -1,9 +1,13 @@
-class Zombie
-  attr_accessor :name, :brains
+require 'pry'
+require 'tweet'
 
-  def initialize
-    @name = 'Ash'
-    @brains = 0
+class Zombie
+  attr_accessor :name, :brains, :tweets
+
+  def initialize(params={})
+    @name = params[:name] || 'Ash'
+    @brains = params[:brains] || 0
+    @tweets = params[:tweets] || []
   end
 
   def hungry?

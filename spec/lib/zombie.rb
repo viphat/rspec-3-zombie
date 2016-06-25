@@ -1,5 +1,7 @@
 require 'spec_helper'
 require 'zombie'
+require 'tweet'
+
 describe Zombie do
   # Your example test go here
   it 'is named Ash' do
@@ -38,7 +40,17 @@ describe Zombie do
     expect(zombie.hungry?).to be true
   end
 
+  it 'has a name that match "Asshole"' do
+    zombie = Zombie.new(name: 'Asshole 1')
+    expect(zombie.name).to match(/Asshole \d/)
+  end
 
-
+  it 'include tweets' do
+    tweet1 = Tweet.new(status: 'Uuuuuuhhhhh')
+    tweet2 = Tweet.new(status: 'Arrrgggghhhh')
+    zombie = Zombie.new(name: 'Ass', tweets: [tweet1, tweet2])
+    expect(zombie.tweets).to include(tweet1)
+    expect(zombie.tweets).to include(tweet2)
+  end
 
 end
